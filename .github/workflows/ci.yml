@@ -11,6 +11,13 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+# Opt into Node 24 for JavaScript actions to silence the Node 20 deprecation
+# warnings emitted by the runner. This only affects the Node runtime that
+# executes action scripts themselves (checkout, setup-node, ...); our project
+# still uses whatever `node-version` we configure below.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 jobs:
   typescript:
     name: TypeScript (typecheck + vitest)
