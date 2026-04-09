@@ -5,89 +5,91 @@
 [![Node](https://img.shields.io/badge/node-%3E%3D18.17-green)](https://nodejs.org/)
 [![Python](https://img.shields.io/badge/python-%3E%3D3.9-blue)](https://www.python.org/)
 
-Herramienta local de nivel producción para **generar, editar, auditar, previsualizar y reutilizar** presentaciones `.pptx` profesionales, expuesta como un servidor **MCP** para que agentes como Claude Code o Codex puedan usarla como motor de presentaciones.
+A local, production-grade engine for **generating, editing, auditing, previewing and reusing** professional `.pptx` presentations, exposed as an **MCP** server so agents like Claude Code or Codex can use it as a presentation backend.
 
-Pensada para brochures, propuestas comerciales, case studies, decks ejecutivos, quarterly reviews y presentaciones institucionales.
+Designed for brochures, sales proposals, case studies, executive decks, quarterly reviews and institutional presentations.
 
-> **Open source friendly.** El proyecto viene con la marca MagmaLabs y una
-> marca neutral `acme` incluidas como ejemplos, pero cualquiera puede usar sus
-> propios brands, templates y ejemplos sin forkear el código. Ver
-> [`docs/customization.md`](docs/customization.md) para la guía de white-labeling.
-
----
-
-## 1. ¿Qué hace esta herramienta?
-
-1. Recibe un brief estructurado o un `deck_spec` parcial.
-2. Aplica branding, layouts, reglas visuales y assets.
-3. Procesa imágenes localmente con Pillow (crop, resize, overlays, etc.).
-4. Genera un archivo `.pptx` real con calidad comercial.
-5. Produce un preview manifest útil para revisión por un agente.
-6. Corre reglas heurísticas de auditoría (densidad, contraste, bounds...).
-7. Permite actualizar slides de forma puntual sin rehacer el deck.
-8. Extrae texto e imágenes desde `.pptx` existentes para reutilización.
-9. Expone todo como tools y resources vía **MCP** (stdio).
-
-Todo corre **localmente**. No hay dependencias de servicios externos.
+> **Open source friendly.** The project ships with the MagmaLabs brand and a
+> neutral `acme` brand as examples, but anyone can use their own brands,
+> templates and examples without forking the code. See
+> [`docs/customization.md`](docs/customization.md) for the white-labeling guide.
 
 ---
 
-## 2. Arquitectura
+## 1. What does this tool do?
+
+1. Accepts a structured brief or a partial `deck_spec`.
+2. Applies branding, layouts, visual rules and assets.
+3. Processes images locally with Pillow (crop, resize, overlays, etc.).
+4. Generates a real `.pptx` file with commercial quality.
+5. Produces a rich preview manifest for agent review.
+6. Runs heuristic audit rules (density, contrast, bounds, ...).
+7. Lets you update specific slides without rebuilding the deck.
+8. Extracts text and images from existing `.pptx` files for reuse.
+9. Exposes everything as tools and resources over **MCP** (stdio).
+
+Everything runs **locally**. No external services required.
+
+---
+
+## 2. Architecture
 
 ```
 apps/
-  mcp-server/      # Servidor MCP expuesto por stdio
-  renderer/        # Renderer PptxGenJS (layouts, themes, utilities)
-  cli/             # CLI para ejecutar el mismo pipeline sin MCP
-  asset-worker/    # Worker Python/Pillow para procesamiento de imágenes
+  mcp-server/      # MCP server exposed over stdio
+  renderer/        # PptxGenJS renderer (layouts, themes, utilities)
+  cli/             # CLI that runs the same pipeline without MCP
+  asset-worker/    # Python/Pillow worker for image processing
 packages/
-  schema/          # Contratos Zod + tipos TypeScript
-  templates/       # DeckTemplates listos (brochure, case-study, ...)
+  schema/          # Zod contracts + TypeScript types
+  templates/       # Ready-to-use DeckTemplates (brochure, case-study, ...)
   core/            # Registries, deck builder, audit, extraction, assets
 assets/
-  brands/          # brand.json por marca (MagmaLabs incluido)
+  brands/          # brand.json per brand (MagmaLabs and Acme included)
 examples/
   brochure/        # brief + deck-spec + assets-plan
   case-study/
   proposal/
   quarterly-review/
-tests/             # Tests Vitest
+  neutral-brochure/ # brand-neutral example using the Acme brand
+tests/             # Vitest tests
 ```
 
-El diseño sigue tres principios fundamentales:
+The design follows three fundamental principles:
 
-1. **Contenido vs Render**. El agente decide qué decir. El renderer decide geometría, espaciado, tipografía y branding.
-2. **Fuente de verdad única**: el `DeckSpec`. Todo el pipeline gira en torno a él.
-3. **Layouts reutilizables**: cada layout vive como módulo aislado, registrado en un registry.
+1. **Content vs render.** The agent decides what to say. The renderer decides geometry, spacing, typography and branding.
+2. **Single source of truth**: the `DeckSpec`. The whole pipeline revolves around it.
+3. **Reusable layouts**: each layout lives as an isolated module, registered in a registry.
 
-Ver `docs/architecture.md` para más detalle.
+See `docs/architecture.md` for more detail.
 
 ---
 
 ## 3. Stack
 
-| Capa | Tecnología |
+| Layer | Technology |
 | --- | --- |
 | Runtime | Node.js ≥18.17, TypeScript (ESM), pnpm workspaces |
-| Render PPTX | [PptxGenJS](https://github.com/gitbrent/PptxGenJS) |
-| Procesamiento de imágenes | Python 3 + Pillow |
-| Validación de contratos | Zod |
+| PPTX render | [PptxGenJS](https://github.com/gitbrent/PptxGenJS) |
+| Image processing | Python 3 + Pillow |
+| Contract validation | Zod |
 | Tests | Vitest (TS) + pytest (Python) |
 | Lint / format | ESLint + Prettier |
-| MCP | `@modelcontextprotocol/sdk` (con fallback stdio JSON-RPC) |
+| MCP | `@modelcontextprotocol/sdk` (with JSON-RPC stdio fallback) |
 
 ---
 
-## 4. Instalación
+## 4. Installation
 
 ```bash
-# 1. Clona el repo y entra a la carpeta
+# 1. Clone the repo and enter the folder
+git clone git@github.com:vicmaster/presentation-studio-mcp.git
 cd presentation-studio-mcp
 
-# 2. Instala dependencias TypeScript
+# 2. Install TypeScript dependencies
 pnpm install
 
-# 3. Instala dependencias Python del asset worker
+# 3. Install Python dependencies for the asset worker
 cd apps/asset-worker
 python3 -m venv .venv
 source .venv/bin/activate
@@ -95,57 +97,61 @@ pip install -r requirements.txt
 cd ../..
 ```
 
-> El worker Python solo se necesita si quieres ejecutar `prepare_assets`. El render básico (`render_deck`, `audit_deck`, `preview_deck`, `extract_from_pptx`, `update_slide`) funciona sin Pillow.
+> The Python worker is only required if you want to run `prepare_assets`. The core rendering pipeline (`render_deck`, `audit_deck`, `preview_deck`, `extract_from_pptx`, `update_slide`) works without Pillow.
 
 ---
 
-## 5. Uso rápido
+## 5. Quick start
 
-### 5.1 Ejecutar el servidor MCP
+### 5.1 Run the MCP server
 
 ```bash
 pnpm dev:mcp
 ```
 
-Esto arranca `@presentation-studio/mcp-server` por stdio. En un cliente MCP compatible podrás ver los tools y resources registrados.
+This starts `@presentation-studio/mcp-server` over stdio. From any MCP-compatible client you will see the registered tools and resources.
 
-### 5.2 Usar la CLI
+### 5.2 Use the CLI
 
 ```bash
-# Renderizar un deck de ejemplo
+# Render an example deck
 pnpm cli render --input examples/brochure/deck-spec.json --output tmp/brochure.pptx
 
-# Auditar
+# Audit it
 pnpm cli audit --input examples/brochure/deck-spec.json
 
-# Generar un preview manifest
+# Build a preview manifest
 pnpm cli preview --input examples/case-study/deck-spec.json --output tmp/case-study-preview.json
 
-# Extraer contenido de un .pptx
+# Extract content from an existing .pptx
 pnpm cli extract --input tmp/brochure.pptx --output tmp/extracted
 
-# Preparar assets con Pillow (requiere el worker instalado)
+# Prepare assets with Pillow (requires the worker installed)
 pnpm cli prepare-assets --input examples/brochure/assets-plan.json
 
-# Listar templates y brands
+# List templates and brands
 pnpm cli list-templates
 pnpm cli list-brands
 
-# Validar un deck spec
+# Validate a deck spec
 pnpm cli validate-deck --input examples/proposal/deck-spec.json
+
+# Scaffold your own brand or template
+pnpm cli init-brand --id acme --name "Acme Inc" --primary "#0066FF"
+pnpm cli init-template --id my-pitch --name "Pitch Deck" --output my-templates/pitch.json
 ```
 
 ---
 
-## 6. ¿Qué es un `deck_spec`?
+## 6. What is a `deck_spec`?
 
-Un `deck_spec` es un documento JSON que describe una presentación completa:
+A `deck_spec` is a JSON document that fully describes a presentation:
 
 ```json
 {
-  "meta": { "title": "...", "language": "es", "presentation_type": "brochure" },
-  "brand": { "id": "magmalabs", "primary_color": "#f84848", ... },
-  "theme": { "id": "magma", "page_size": "LAYOUT_WIDE", "density": "balanced" },
+  "meta": { "title": "...", "language": "en", "presentation_type": "brochure" },
+  "brand": { "id": "acme", "primary_color": "#0066FF", ... },
+  "theme": { "id": "light-corporate", "page_size": "LAYOUT_WIDE", "density": "balanced" },
   "assets": [ ... ],
   "slides": [
     { "id": "cover", "layout": "hero-cover", "title": "...", "images": [...] }
@@ -153,39 +159,39 @@ Un `deck_spec` es un documento JSON que describe una presentación completa:
 }
 ```
 
-Los campos obligatorios se validan con Zod y cualquier extra pasa por `normalize_deck_spec` que rellena defaults razonables.
+Required fields are validated with Zod. Any partial payload can be piped through `normalize_deck_spec`, which fills sensible defaults.
 
-Más detalles en `docs/deck-spec.md`.
+More details in `docs/deck-spec.md`.
 
 ---
 
-## 7. Layouts disponibles
+## 7. Available layouts
 
-15 layouts listos, cada uno en un módulo independiente:
+15 layouts ready to use, each in its own module:
 
 `hero-cover`, `section-divider`, `two-column-text`, `image-left-text-right`, `image-right-text-left`, `case-study-highlight`, `metrics-grid`, `logo-wall`, `quote-slide`, `closing-cta`, `timeline-slide`, `comparison-table`, `process-steps`, `testimonial-grid`, `capabilities-grid`.
 
-Si el deck pide un layout que no existe, el renderer hace fallback a `two-column-text` y emite un warning. Ver `docs/layouts.md` para detalles de cada uno.
+If a deck asks for a layout that is not registered, the renderer falls back to `two-column-text` and emits a warning. See `docs/layouts.md` for the details of each layout.
 
-### Agregar un nuevo layout
+### Adding a new layout
 
-1. Crea `apps/renderer/src/layouts/mi-layout.ts` implementando el tipo `LayoutRenderer`.
-2. Regístralo en `apps/renderer/src/index.ts` dentro de `createDefaultLayoutRegistry()`.
+1. Create `apps/renderer/src/layouts/myLayout.ts` implementing the `LayoutRenderer` type.
+2. Register it in `apps/renderer/src/index.ts` inside `createDefaultLayoutRegistry()`.
 
 ---
 
-## 8. Brands y themes
+## 8. Brands and themes
 
-Los brands viven en `assets/brands/<brand-id>/brand.json` y el registry los carga al arrancar. El proyecto incluye dos ejemplos:
+Brands live under `assets/brands/<brand-id>/brand.json` and the registry loads them at startup. The project ships with two examples:
 
-- **MagmaLabs** — brand real, registrado también por código como default.
-- **Acme Inc** — brand neutral de ejemplo para onboarding open source.
+- **MagmaLabs** — real brand, also registered programmatically as the default.
+- **Acme Inc** — neutral example brand for open source onboarding.
 
-Puedes desactivar la carga de MagmaLabs y/o usar tu propia marca editando `presentation-studio.config.json` (ver sección 9 abajo).
+You can disable the built-in MagmaLabs brand and/or use your own by editing `presentation-studio.config.json` (see section 9 below).
 
-Cambiar de brand es tan simple como usar un `brand.id` distinto en tu `deck_spec`. Los themes (`magma`, `minimal`, `light-corporate`, `dark-enterprise`) se resuelven en `ThemeRegistry`.
+Switching brands is as simple as using a different `brand.id` in your `deck_spec`. Themes (`magma`, `minimal`, `light-corporate`, `dark-enterprise`) are resolved by `ThemeRegistry`.
 
-### Agregar una nueva brand (comando)
+### Add a new brand (one command)
 
 ```bash
 pnpm cli init-brand \
@@ -196,15 +202,15 @@ pnpm cli init-brand \
   --body-font "Inter"
 ```
 
-Crea `assets/brands/mycompany/brand.json` listo para usar. Puedes editarlo a mano después — el registry lo recarga en cada invocación del CLI / MCP.
+This creates `assets/brands/mycompany/brand.json` ready to use. You can edit it by hand afterward — the registry reloads it on every CLI / MCP invocation.
 
 ---
 
-## 9. Customización y open source (white-label)
+## 9. Customization and open source (white-label)
 
-El proyecto está diseñado para ser reutilizable por cualquiera sin forkear el código. Todo lo relacionado con MagmaLabs es **opt-in**.
+The project is designed to be reusable by anyone without forking the code. Everything MagmaLabs-related is **opt-in**.
 
-Crea un `presentation-studio.config.json` en la raíz:
+Create a `presentation-studio.config.json` at the repo root:
 
 ```json
 {
@@ -217,102 +223,103 @@ Crea un `presentation-studio.config.json` en la raíz:
 }
 ```
 
-- `load_builtin_brand: false` → **no** registra MagmaLabs al arrancar.
-- `load_builtin_templates: false` → **no** registra los 7 templates del paquete.
-- `templates_dir` → directorio con `*.json` templates que se cargan automáticamente.
+- `load_builtin_brand: false` → does **not** register MagmaLabs at startup.
+- `load_builtin_templates: false` → does **not** register the 7 built-in templates.
+- `templates_dir` → directory of `*.json` templates to auto-load.
 
-Guía completa en [`docs/customization.md`](docs/customization.md): cómo agregar tus layouts, tus themes, cómo borrar todo rastro de MagmaLabs, cómo scaffoldear brands/templates con la CLI, y cómo deployar el proyecto como tu propio producto.
+The full guide is in [`docs/customization.md`](docs/customization.md): how to add your own layouts and themes, how to remove every trace of MagmaLabs, how to scaffold brands/templates from the CLI, and how to deploy the project as your own product.
 
 ```bash
-# Scaffold rápido de brand y template
+# Quick brand and template scaffolds
 pnpm cli init-brand --id acme --name "Acme Inc" --primary "#0066FF"
 pnpm cli init-template --id my-pitch --name "Pitch Deck" --output my-templates/pitch.json
 ```
 
-El ejemplo `examples/neutral-brochure/` usa el brand `acme` y está **libre** de cualquier contenido de MagmaLabs.
+The `examples/neutral-brochure/` sample uses the `acme` brand and is **free** of any MagmaLabs content.
 
 ---
 
-## 10. Sistema de templates
+## 10. Template system
 
-Un template describe un flujo recomendado de slides para un tipo de presentación. Se usan en `plan_deck` para sugerir una estructura completa a partir de un Brief.
+A template describes a recommended slide flow for a particular kind of presentation. Templates are consumed by `plan_deck` to propose a complete outline starting from a Brief.
 
-Templates registrados por defecto: `brochure-enterprise`, `brochure-premium`, `case-study-modern`, `sales-proposal`, `exec-update`, `quarterly-review`, `training-deck`.
+Built-in templates: `brochure-enterprise`, `brochure-premium`, `case-study-modern`, `sales-proposal`, `exec-update`, `quarterly-review`, `training-deck`.
 
-También puedes cargar tus propios templates como JSON (ver sección 9).
+You can also load your own templates as JSON (see section 9).
 
-Ver `packages/templates/src/` para ver cada definición built-in.
+See `packages/templates/src/` for each built-in definition.
 
 ---
 
-## 10. Worker Pillow
+## 11. Pillow worker
 
-El worker vive en `apps/asset-worker/` y expone 9 operaciones: `resize`, `contain`, `cover_crop`, `normalize`, `overlay`, `montage`, `thumbnail`, `contact_sheet`, `pad_to_canvas`.
+The worker lives in `apps/asset-worker/` and exposes 9 operations: `resize`, `contain`, `cover_crop`, `normalize`, `overlay`, `montage`, `thumbnail`, `contact_sheet`, `pad_to_canvas`.
 
-Contrato IO:
+IO contract:
 
 ```json
-// entrada
+// request
 { "operation": "cover_crop", "input_path": "/tmp/a.jpg", "output_path": "/tmp/b.png", "width": 1600, "height": 900 }
-// salida
+// response
 { "ok": true, "operation": "cover_crop", "output_path": "/tmp/b.png", "width": 1600, "height": 900, "warnings": [] }
 ```
 
-El bridge Node (`PillowBridge`) spawnea `python3` (override: `PPT_STUDIO_PYTHON`) y gestiona errores. Documentado en `docs/asset-worker.md`.
+The Node bridge (`PillowBridge`) spawns `python3` (override via `PPT_STUDIO_PYTHON`) and handles errors. Documented in `docs/asset-worker.md`.
 
 ---
 
-## 11. MCP: tools y resources
+## 12. MCP: tools and resources
 
 ### Tools (13)
 
-| Tool | Descripción |
+| Tool | Description |
 | --- | --- |
-| `create_brief` | Valida/normaliza un Brief |
-| `plan_deck` | Construye un DeckSpec skeleton desde un Brief + template |
-| `normalize_deck_spec` | Normaliza un deck parcial a uno válido |
-| `prepare_assets` | Ejecuta un plan de assets via Pillow |
-| `render_deck` | Genera `.pptx` |
-| `preview_deck` | Produce un preview manifest rico |
-| `audit_deck` | Ejecuta reglas de auditoría |
-| `update_slide` | Modifica (merge/replace) o inserta una slide |
-| `extract_from_pptx` | Extrae texto/media desde un `.pptx` existente |
-| `list_templates` | Lista templates registrados |
-| `list_brands` | Lista brands registradas |
-| `get_deck_spec` | Devuelve el deck actual en memoria |
-| `save_deck_spec` | Persiste el deck actual a disco |
+| `create_brief` | Validates / normalizes a Brief |
+| `plan_deck` | Builds a DeckSpec skeleton from a Brief + template |
+| `normalize_deck_spec` | Normalizes a partial deck into a strict one |
+| `prepare_assets` | Runs an asset plan through the Pillow worker |
+| `render_deck` | Generates a `.pptx` file |
+| `preview_deck` | Produces a rich preview manifest |
+| `audit_deck` | Runs the audit rules |
+| `update_slide` | Updates (merge/replace) or inserts a slide |
+| `extract_from_pptx` | Extracts text / media from an existing `.pptx` |
+| `list_templates` | Lists registered templates |
+| `list_brands` | Lists registered brands |
+| `get_deck_spec` | Returns the session's current deck |
+| `save_deck_spec` | Persists the current deck to disk |
 
-### Resources (8)
+### Resources
 
-- `brand://magmalabs/default`
-- `template://brochure/enterprise`
-- `template://case-study/modern`
-- `template://proposal/sales`
-- `template://quarterly/review`
-- `deck://current/spec`
-- `deck://current/audit`
-- `deck://current/previews`
+Resources are generated dynamically from whatever is currently registered:
 
-Ver `docs/mcp-tools.md` para ejemplos de request/response.
+- `brand://<id>/default` — one per registered brand kit
+- `brand://default` — stable alias for the configured default brand
+- `template://<id>` — one per registered deck template (built-in or JSON-loaded)
+- `deck://current/spec` — in-memory DeckSpec for the session
+- `deck://current/audit` — audit report for the current deck
+- `deck://current/previews` — preview manifest for the current deck
+
+See `docs/mcp-tools.md` for request / response examples.
 
 ---
 
-## 12. Ejemplos completos
+## 13. Full examples
 
-Cada ejemplo en `examples/` incluye `brief.json`, `deck-spec.json` y un README de assets.
+Each example in `examples/` includes `brief.json`, `deck-spec.json` and a README for assets.
 
 ```bash
 pnpm cli render --input examples/brochure/deck-spec.json --output tmp/brochure.pptx
 pnpm cli render --input examples/case-study/deck-spec.json --output tmp/case-study.pptx
 pnpm cli render --input examples/proposal/deck-spec.json --output tmp/proposal.pptx
 pnpm cli render --input examples/quarterly-review/deck-spec.json --output tmp/qbr.pptx
+pnpm cli render --input examples/neutral-brochure/deck-spec.json --output tmp/acme.pptx
 ```
 
-Abre el `.pptx` resultante con PowerPoint, Keynote o LibreOffice Impress.
+Open the resulting `.pptx` with PowerPoint, Keynote or LibreOffice Impress.
 
 ---
 
-## 13. Tests
+## 14. Tests
 
 ```bash
 # TypeScript
@@ -323,32 +330,34 @@ cd apps/asset-worker
 pytest
 ```
 
-Los tests TypeScript cubren: schemas, normalización, auditoría (densidad, slide vacía, layout desconocido, CTA faltante), update de slide, render básico con assertion sobre el `.pptx` generado y un round-trip de extracción.
+The TypeScript tests cover: schemas, normalization, audit rules (density, empty slide, unknown layout, missing CTA), slide updates, basic render with an assertion on the generated `.pptx`, a round-trip of the extractor, and the studio config system.
 
-Los tests Python cubren: resize, cover_crop, contact_sheet e input inválido.
+The Python tests cover: resize, cover_crop, contact_sheet and invalid input handling.
 
----
-
-## 14. Limitaciones actuales (honestidad intencional)
-
-- **No renderizamos miniaturas reales de slides**. Para preservar simplicidad y no depender de LibreOffice/Headless PowerPoint, `preview_deck` devuelve un manifest estructurado en vez de imágenes. Es suficiente para que un agente revise el deck, pero no reemplaza a ver la slide renderizada. Se documenta en `docs/architecture.md`.
-- **La extracción desde `.pptx`** recupera textos, títulos aproximados, notas y media. NO reconstruye layout/colores/tipografía. Es reutilización realista, no round-trip perfecto.
-- **Las estimaciones de densidad y overflow son heurísticas**. No usan un motor de métricas tipográficas. Funcionan bien en la práctica pero pueden ser imperfectas con fuentes muy anchas/estrechas.
-- **El servidor MCP** usa el SDK oficial si está instalado y tiene un fallback JSON-RPC 2.0 sobre stdio en caso contrario. El fallback implementa los 4 métodos principales (`tools/list`, `tools/call`, `resources/list`, `resources/read`), pero no soporta streaming ni resources de binarios.
-- **Pillow se invoca por proceso**. Cada operación spawnea un intérprete Python. Para batches muy grandes esto tiene overhead; se puede optimizar a future con un worker persistente.
+CI runs both suites plus a smoke render of every example deck on every push and PR.
 
 ---
 
-## 15. Próximos pasos recomendados
+## 15. Current limitations (intentional honesty)
 
-1. Integrar un motor headless (LibreOffice) para renderizar previews PNG reales.
-2. Añadir más templates sector-específicos (fintech, retail, salud).
-3. Agregar validación de fonts disponibles en el sistema.
-4. Generar JSON Schemas exportables a partir de los Zod schemas para clientes sin Zod.
-5. Persistir sesiones MCP entre reinicios (hoy se pierde el deck actual si reinicias).
+- **No real slide thumbnails.** To keep the project simple and free of heavy dependencies (LibreOffice / headless PowerPoint), `preview_deck` returns a structured manifest instead of images. It is enough for an agent to review the deck, but it is not a substitute for looking at the rendered slide. Documented in `docs/architecture.md`.
+- **`.pptx` extraction** recovers text, approximate titles, notes and media. It does NOT reconstruct layout, colors or typography. Realistic reuse, not a perfect round-trip.
+- **Density and overflow estimates are heuristic.** They do not use a real typography metrics engine. They work well in practice but can be imperfect with very wide or very narrow fonts.
+- **The MCP server** uses the official SDK when installed and falls back to a JSON-RPC 2.0 stdio loop otherwise. The fallback implements the four core methods (`tools/list`, `tools/call`, `resources/list`, `resources/read`) but does not support streaming or binary resources.
+- **Pillow is invoked per process.** Each operation spawns a Python interpreter. For very large batches this has overhead; a persistent worker is a possible future optimization.
 
 ---
 
-## Licencia
+## 16. Recommended next steps
 
-MIT (o la que el usuario decida — añade `LICENSE` si vas a distribuir).
+1. Integrate a headless engine (LibreOffice) to render real PNG previews per slide.
+2. Add more industry-specific templates (fintech, retail, healthcare).
+3. Validate available fonts on the host system before rendering.
+4. Emit JSON Schemas from the Zod schemas for clients without Zod.
+5. Persist MCP sessions across restarts (today the current deck is lost on restart).
+
+---
+
+## License
+
+MIT — see [LICENSE](./LICENSE).
