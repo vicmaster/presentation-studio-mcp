@@ -1,0 +1,101 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel stale runs when a new commit lands on the same ref.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typescript:
+    name: TypeScript (typecheck + vitest)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck (all workspaces)
+        run: pnpm typecheck
+
+      - name: Run Vitest
+        run: npx vitest run --reporter=basic
+
+      - name: Smoke render every example deck
+        run: |
+          set -euo pipefail
+          mkdir -p tmp
+          pnpm cli render --input examples/brochure/deck-spec.json --output tmp/brochure.pptx --quiet
+          pnpm cli render --input examples/case-study/deck-spec.json --output tmp/case-study.pptx --quiet
+          pnpm cli render --input examples/proposal/deck-spec.json --output tmp/proposal.pptx --quiet
+          pnpm cli render --input examples/quarterly-review/deck-spec.json --output tmp/qbr.pptx --quiet
+          pnpm cli render --input examples/neutral-brochure/deck-spec.json --output tmp/acme.pptx --quiet
+          ls -la tmp/*.pptx
+          # Fail if any of the pptx files is suspiciously small.
+          for f in tmp/*.pptx; do
+            size=$(stat -c%s "$f" 2>/dev/null || stat -f%z "$f")
+            if [ "$size" -lt 50000 ]; then
+              echo "× $f is only $size bytes, expected at least 50KB" >&2
+              exit 1
+            fi
+          done
+
+      - name: Upload rendered decks as artifacts
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-decks-${{ github.sha }}
+          path: tmp/*.pptx
+          retention-days: 7
+
+  python:
+    name: Python (asset worker pytest)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: apps/asset-worker/requirements.txt
+
+      - name: Install worker dependencies
+        working-directory: apps/asset-worker
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Run pytest
+        working-directory: apps/asset-worker
+        run: python -m pytest -v
+
+      - name: Smoke test the worker via stdin JSON contract
+        working-directory: apps/asset-worker
+        run: |
+          set -euo pipefail
+          python -c "from PIL import Image; Image.new('RGB',(800,600),(200,30,30)).save('/tmp/ps_src.png')"
+          echo '{"operation":"resize","input_path":"/tmp/ps_src.png","output_path":"/tmp/ps_out.png","width":200,"height":150}' \
+            | python src/main.py | tee /tmp/response.json
+          python -c "import json; r=json.load(open('/tmp/response.json')); assert r['ok'], r; assert r['width']==200; assert r['height']==150"

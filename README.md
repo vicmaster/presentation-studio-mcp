@@ -1,5 +1,10 @@
 # presentation-studio-mcp
 
+[![CI](https://github.com/vicmaster/presentation-studio-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/vicmaster/presentation-studio-mcp/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Node](https://img.shields.io/badge/node-%3E%3D18.17-green)](https://nodejs.org/)
+[![Python](https://img.shields.io/badge/python-%3E%3D3.9-blue)](https://www.python.org/)
+
 Herramienta local de nivel producción para **generar, editar, auditar, previsualizar y reutilizar** presentaciones `.pptx` profesionales, expuesta como un servidor **MCP** para que agentes como Claude Code o Codex puedan usarla como motor de presentaciones.
 
 Pensada para brochures, propuestas comerciales, case studies, decks ejecutivos, quarterly reviews y presentaciones institucionales.
