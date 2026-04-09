@@ -1,0 +1,81 @@
+import { DeckTemplateSchema, type DeckTemplate } from '@presentation-studio/schema';
+
+export const caseStudyModern: DeckTemplate = DeckTemplateSchema.parse({
+  id: 'case-study-modern',
+  name: 'Modern Case Study',
+  description:
+    'Deck de caso de éxito moderno. Sigue una narrativa reto → enfoque → solución → resultados.',
+  recommended_audience: 'Clientes potenciales, inversores, equipos internos de ventas.',
+  recommended_slide_count: { min: 8, max: 12, ideal: 10 },
+  density_guidance: 'balanced',
+  content_guidance: [
+    'Sigue la estructura Reto → Enfoque → Solución → Resultados.',
+    'Asegúrate de tener al menos 3 métricas cuantitativas.',
+    'Incluye screenshots o artefactos reales cuando sea posible.',
+  ],
+  default_theme: 'magma',
+  slide_flow: [
+    {
+      slide_id: 'cover',
+      layout: 'hero-cover',
+      purpose: 'Portada con nombre del cliente y título del caso.',
+      required_fields: ['title'],
+      optional_fields: ['subtitle', 'images'],
+      density: 'minimal',
+    },
+    {
+      slide_id: 'client',
+      layout: 'two-column-text',
+      purpose: 'Quién es el cliente y contexto.',
+      required_fields: ['title', 'body'],
+      optional_fields: ['bullets', 'logos'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'challenge',
+      layout: 'two-column-text',
+      purpose: 'El problema que el cliente enfrentaba.',
+      required_fields: ['title', 'body'],
+      optional_fields: ['bullets'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'approach',
+      layout: 'process-steps',
+      purpose: 'Nuestro enfoque paso a paso.',
+      required_fields: ['title', 'items'],
+      content_hints: ['3 a 5 pasos claros.'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'solution',
+      layout: 'image-right-text-left',
+      purpose: 'Qué construimos o cómo resolvimos.',
+      required_fields: ['title', 'body'],
+      optional_fields: ['images'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'results',
+      layout: 'metrics-grid',
+      purpose: 'Métricas duras del impacto.',
+      required_fields: ['title', 'metrics'],
+      content_hints: ['Mínimo 3 métricas.'],
+      density: 'minimal',
+    },
+    {
+      slide_id: 'testimonial',
+      layout: 'quote-slide',
+      purpose: 'Cita textual del cliente.',
+      required_fields: ['quote', 'quote_author'],
+      density: 'minimal',
+    },
+    {
+      slide_id: 'closing-cta',
+      layout: 'closing-cta',
+      purpose: 'Cierre con CTA.',
+      required_fields: ['title', 'cta'],
+      density: 'minimal',
+    },
+  ],
+});

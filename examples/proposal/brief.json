@@ -1,0 +1,21 @@
+{
+  "id": "brief-proposal-northwind",
+  "title": "Propuesta comercial para Northwind",
+  "goal": "Cerrar un contrato de modernización de plataforma con Northwind.",
+  "audience": "CTO y VP de producto de Northwind.",
+  "language": "es",
+  "tone": "professional",
+  "brand_id": "magmalabs",
+  "presentation_type": "sales-proposal",
+  "max_slides": 13,
+  "key_messages": [
+    "Entendemos el reto",
+    "Alcance",
+    "Metodología",
+    "Timeline",
+    "Equipo",
+    "Inversión",
+    "Siguientes pasos"
+  ],
+  "constraints": { "require_closing_cta": true }
+}

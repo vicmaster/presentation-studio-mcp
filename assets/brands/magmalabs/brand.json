@@ -1,0 +1,49 @@
+{
+  "id": "magmalabs",
+  "name": "MagmaLabs",
+  "description": "Consultoría de ingeniería, diseño y equipos para productos digitales escalables.",
+  "colors": {
+    "primary": "#f84848",
+    "secondary": "#000000",
+    "accent": "#ff7a59",
+    "background": "#ffffff",
+    "surface": "#f7f7f8",
+    "text": "#111111",
+    "text_muted": "#555555",
+    "success": "#2fb67b",
+    "warning": "#e6a822",
+    "danger": "#d62828"
+  },
+  "fonts": {
+    "heading": "Lato",
+    "body": "Lato",
+    "mono": "Courier New"
+  },
+  "logo_paths": {},
+  "spacing_rules": {
+    "safe_margin_inches": 0.5,
+    "inner_gap_inches": 0.3,
+    "section_gap_inches": 0.55
+  },
+  "border_radius": 0.08,
+  "shadow_style": "soft",
+  "preferred_layouts": [
+    "hero-cover",
+    "capabilities-grid",
+    "metrics-grid",
+    "case-study-highlight",
+    "closing-cta"
+  ],
+  "image_treatment_rules": {
+    "default_fit": "cover",
+    "rounded": true,
+    "rounded_radius_pct": 6,
+    "shadow": false
+  },
+  "default_theme": "magma",
+  "page_backgrounds": {
+    "light": "#ffffff",
+    "dark": "#0a0a0a",
+    "accent": "#f84848"
+  }
+}

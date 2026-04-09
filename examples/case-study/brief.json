@@ -1,0 +1,19 @@
+{
+  "id": "brief-case-study-acme",
+  "title": "Caso de estudio ACME + MagmaLabs",
+  "goal": "Mostrar cómo MagmaLabs ayudó a ACME a modernizar su pipeline de entrega.",
+  "audience": "Clientes potenciales en retail y fintech.",
+  "language": "es",
+  "tone": "professional",
+  "brand_id": "magmalabs",
+  "presentation_type": "case-study",
+  "max_slides": 10,
+  "key_messages": [
+    "Cliente",
+    "Reto",
+    "Enfoque",
+    "Solución",
+    "Resultados"
+  ],
+  "constraints": { "require_closing_cta": true }
+}

@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "title": "QBR 2026 Q1",
+    "subtitle": "MagmaLabs · Leadership review",
+    "language": "es",
+    "presentation_type": "quarterly-review",
+    "author": "presentation-studio-mcp",
+    "version": "1.0.0"
+  },
+  "brand": {
+    "id": "magmalabs",
+    "name": "MagmaLabs",
+    "primary_color": "#f84848",
+    "secondary_color": "#000000",
+    "background_color": "#ffffff",
+    "text_color": "#111111",
+    "heading_font": "Lato",
+    "body_font": "Lato"
+  },
+  "theme": {
+    "id": "dark-enterprise",
+    "page_size": "LAYOUT_WIDE",
+    "density": "balanced",
+    "background_style": "dark",
+    "footer_text": "QBR · Q1 2026"
+  },
+  "slides": [
+    {
+      "id": "cover",
+      "layout": "hero-cover",
+      "kicker": "QBR",
+      "title": "Q1 2026: un trimestre de consolidación",
+      "subtitle": "MagmaLabs · Leadership review"
+    },
+    {
+      "id": "agenda",
+      "layout": "capabilities-grid",
+      "title": "Agenda",
+      "items": [
+        { "label": "Titular del trimestre" },
+        { "label": "KPIs" },
+        { "label": "Highlights" },
+        { "label": "Lowlights y aprendizajes" },
+        { "label": "Caso destacado" },
+        { "label": "Roadmap Q2" }
+      ]
+    },
+    {
+      "id": "headline",
+      "layout": "section-divider",
+      "title": "Trimestre sólido, deuda técnica bajando.",
+      "subtitle": "Cerramos Q1 2026 con crecimiento y estabilidad."
+    },
+    {
+      "id": "metrics",
+      "layout": "metrics-grid",
+      "title": "KPIs del trimestre",
+      "metrics": [
+        { "label": "Revenue", "value": "+18%", "detail": "QoQ" },
+        { "label": "Utilization", "value": "82%", "detail": "target 80%" },
+        { "label": "NPS clientes", "value": "74" },
+        { "label": "Churn", "value": "2.1%", "detail": "-0.4 pts" }
+      ]
+    },
+    {
+      "id": "highlights",
+      "layout": "capabilities-grid",
+      "title": "Highlights",
+      "items": [
+        { "label": "Nuevos clientes", "description": "3 cuentas enterprise firmadas." },
+        { "label": "Mejora de márgenes", "description": "Optimización en allocation." },
+        { "label": "Delivery", "description": "Zero incidentes en cuentas Top 5." },
+        { "label": "Cultura", "description": "NPS interno subió a +52." }
+      ]
+    },
+    {
+      "id": "lowlights",
+      "layout": "two-column-text",
+      "title": "Lowlights y aprendizajes",
+      "bullets": [
+        "Dos proyectos con scope creep no controlado.",
+        "Onboarding de un cliente enterprise tomó 6 semanas (target 3).",
+        "Pipeline de ventas con dependencia alta de 2 canales."
+      ]
+    },
+    {
+      "id": "case-highlight",
+      "layout": "case-study-highlight",
+      "title": "Caso destacado: ACME Retail",
+      "metrics": [
+        { "label": "Lead time", "value": "-82%" }
+      ],
+      "body": "Modernizamos la pipeline de entrega, devolviendo autonomía al equipo interno."
+    },
+    {
+      "id": "roadmap",
+      "layout": "timeline-slide",
+      "title": "Roadmap Q2",
+      "items": [
+        { "label": "Abril", "description": "Nueva oferta IA." },
+        { "label": "Mayo", "description": "Expansión LATAM." },
+        { "label": "Junio", "description": "Leadership offsite." }
+      ]
+    },
+    {
+      "id": "goals",
+      "layout": "metrics-grid",
+      "title": "Metas Q2",
+      "metrics": [
+        { "label": "Revenue", "value": "+22%" },
+        { "label": "Utilization", "value": "85%" },
+        { "label": "Churn", "value": "< 2%" }
+      ]
+    },
+    {
+      "id": "closing-cta",
+      "layout": "closing-cta",
+      "title": "A por Q2.",
+      "subtitle": "Gracias al equipo por este trimestre.",
+      "cta": {
+        "label": "Discusión abierta"
+      }
+    }
+  ]
+}

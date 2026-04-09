@@ -1,0 +1,98 @@
+import { DeckTemplateSchema, type DeckTemplate } from '@presentation-studio/schema';
+
+export const salesProposal: DeckTemplate = DeckTemplateSchema.parse({
+  id: 'sales-proposal',
+  name: 'Sales Proposal',
+  description:
+    'Propuesta comercial completa: diagnóstico, alcance, entregables, timeline, equipo, inversión y siguientes pasos.',
+  recommended_audience: 'Decisores B2B evaluando una propuesta concreta.',
+  recommended_slide_count: { min: 10, max: 16, ideal: 13 },
+  density_guidance: 'balanced',
+  content_guidance: [
+    'Habla en términos del cliente y su problema, no del proveedor.',
+    'Incluye inversión de forma clara, sin letra chica innecesaria.',
+    'Cierra con siguientes pasos concretos.',
+  ],
+  default_theme: 'magma',
+  slide_flow: [
+    {
+      slide_id: 'cover',
+      layout: 'hero-cover',
+      purpose: 'Portada con nombre del cliente y título de la propuesta.',
+      required_fields: ['title'],
+      optional_fields: ['subtitle'],
+      density: 'minimal',
+    },
+    {
+      slide_id: 'context',
+      layout: 'two-column-text',
+      purpose: 'Contexto y entendimiento del reto.',
+      required_fields: ['title', 'body'],
+      optional_fields: ['bullets'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'objectives',
+      layout: 'capabilities-grid',
+      purpose: 'Objetivos del proyecto.',
+      required_fields: ['title', 'items'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'scope',
+      layout: 'capabilities-grid',
+      purpose: 'Alcance detallado (in/out).',
+      required_fields: ['title', 'items'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'approach',
+      layout: 'process-steps',
+      purpose: 'Metodología.',
+      required_fields: ['title', 'items'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'timeline',
+      layout: 'timeline-slide',
+      purpose: 'Plan temporal con hitos.',
+      required_fields: ['title', 'items'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'deliverables',
+      layout: 'capabilities-grid',
+      purpose: 'Entregables concretos.',
+      required_fields: ['title', 'items'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'team',
+      layout: 'testimonial-grid',
+      purpose: 'Equipo asignado.',
+      required_fields: ['title', 'items'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'investment',
+      layout: 'metrics-grid',
+      purpose: 'Inversión y condiciones.',
+      required_fields: ['title', 'metrics'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'next-steps',
+      layout: 'process-steps',
+      purpose: 'Siguientes pasos.',
+      required_fields: ['title', 'items'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'closing-cta',
+      layout: 'closing-cta',
+      purpose: 'Cierre con CTA y contacto.',
+      required_fields: ['title', 'cta'],
+      density: 'minimal',
+    },
+  ],
+});

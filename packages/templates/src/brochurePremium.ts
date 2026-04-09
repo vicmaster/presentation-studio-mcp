@@ -1,0 +1,80 @@
+import { DeckTemplateSchema, type DeckTemplate } from '@presentation-studio/schema';
+
+export const brochurePremium: DeckTemplate = DeckTemplateSchema.parse({
+  id: 'brochure-premium',
+  name: 'Premium Brochure',
+  description:
+    'Brochure con identidad más editorial. Más aire, uso fuerte de imágenes y jerarquía tipográfica marcada.',
+  recommended_audience: 'Marcas premium, estudios de diseño, consultoría boutique.',
+  recommended_slide_count: { min: 8, max: 16, ideal: 12 },
+  density_guidance: 'minimal',
+  content_guidance: [
+    'Usa frases cortas y contundentes, con gran aire alrededor.',
+    'Una idea por slide.',
+    'Las imágenes son parte central de la narrativa, no decoración.',
+  ],
+  default_theme: 'magma',
+  slide_flow: [
+    {
+      slide_id: 'cover',
+      layout: 'hero-cover',
+      purpose: 'Carátula con fotografía hero y una frase de valor.',
+      required_fields: ['title'],
+      optional_fields: ['subtitle', 'images'],
+      content_hints: ['Usa una imagen hero de alta calidad.'],
+      density: 'minimal',
+    },
+    {
+      slide_id: 'intro',
+      layout: 'section-divider',
+      purpose: 'Introducción conceptual con una frase icónica.',
+      required_fields: ['title'],
+      optional_fields: ['subtitle'],
+      density: 'minimal',
+    },
+    {
+      slide_id: 'philosophy',
+      layout: 'quote-slide',
+      purpose: 'Filosofía o manifiesto en forma de cita.',
+      required_fields: ['quote'],
+      optional_fields: ['quote_author'],
+      density: 'minimal',
+    },
+    {
+      slide_id: 'what-we-do',
+      layout: 'capabilities-grid',
+      purpose: 'Servicios o áreas de expertise.',
+      required_fields: ['title', 'items'],
+      content_hints: ['4 cards máximo, cada una con una frase.'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'signature-work',
+      layout: 'image-left-text-right',
+      purpose: 'Un trabajo destacado con imagen grande.',
+      required_fields: ['title', 'body', 'images'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'impact',
+      layout: 'metrics-grid',
+      purpose: 'Tres métricas que cuenten el impacto.',
+      required_fields: ['title', 'metrics'],
+      density: 'minimal',
+    },
+    {
+      slide_id: 'testimonial',
+      layout: 'quote-slide',
+      purpose: 'Testimonio de un cliente.',
+      required_fields: ['quote', 'quote_author'],
+      density: 'minimal',
+    },
+    {
+      slide_id: 'closing-cta',
+      layout: 'closing-cta',
+      purpose: 'Cierre con CTA y contacto.',
+      required_fields: ['title', 'cta'],
+      density: 'minimal',
+    },
+  ],
+});

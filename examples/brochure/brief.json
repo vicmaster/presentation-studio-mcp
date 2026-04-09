@@ -1,0 +1,23 @@
+{
+  "id": "brief-brochure-magmalabs",
+  "title": "Brochure Comercial MagmaLabs",
+  "goal": "Presentar MagmaLabs a clientes enterprise y despertar el interés por contratar sus servicios.",
+  "audience": "Decision-makers de empresas enterprise interesadas en desarrollo de producto digital.",
+  "language": "es",
+  "tone": "professional",
+  "brand_id": "magmalabs",
+  "presentation_type": "brochure",
+  "max_slides": 12,
+  "key_messages": [
+    "Quién es MagmaLabs",
+    "Qué hacemos",
+    "Industrias en las que operamos",
+    "Casos de estudio destacados",
+    "Por qué elegirnos",
+    "Cómo contactarnos"
+  ],
+  "sections": [],
+  "constraints": {
+    "require_closing_cta": true
+  }
+}

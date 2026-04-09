@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "title": "Brochure Comercial MagmaLabs",
+    "subtitle": "Ingeniería, diseño y equipos para productos digitales escalables",
+    "language": "es",
+    "presentation_type": "brochure",
+    "author": "presentation-studio-mcp",
+    "version": "1.0.0",
+    "tags": ["brochure", "enterprise", "magmalabs"]
+  },
+  "brand": {
+    "id": "magmalabs",
+    "name": "MagmaLabs",
+    "primary_color": "#f84848",
+    "secondary_color": "#000000",
+    "accent_color": "#ff7a59",
+    "background_color": "#ffffff",
+    "text_color": "#111111",
+    "heading_font": "Lato",
+    "body_font": "Lato"
+  },
+  "theme": {
+    "id": "magma",
+    "page_size": "LAYOUT_WIDE",
+    "density": "balanced",
+    "background_style": "light",
+    "show_footer": true,
+    "show_page_numbers": true,
+    "footer_text": "MagmaLabs · Brochure Comercial"
+  },
+  "assets": [],
+  "slides": [
+    {
+      "id": "cover",
+      "layout": "hero-cover",
+      "kicker": "MagmaLabs",
+      "title": "Construimos productos digitales que escalan.",
+      "subtitle": "Ingeniería, diseño y equipos para empresas que se toman en serio el producto."
+    },
+    {
+      "id": "who-we-are",
+      "layout": "two-column-text",
+      "kicker": "Quiénes somos",
+      "title": "Una consultoría de producto nacida en México, operando globalmente.",
+      "body": "Somos un equipo de ingeniería, diseño y delivery especializado en ayudar a equipos de producto a construir más rápido y con más calidad. Trabajamos como extensión del equipo del cliente, no como una agencia más.",
+      "bullets": [
+        "+10 años construyendo producto",
+        "Equipo distribuido en LATAM, US y Europa",
+        "Clientes enterprise y startups de alto crecimiento",
+        "Operamos en inglés y español"
+      ]
+    },
+    {
+      "id": "what-we-do",
+      "layout": "capabilities-grid",
+      "title": "Qué hacemos",
+      "items": [
+        { "label": "Staff Augmentation", "description": "Ingenieros, diseñadores y PMs integrados a tu operación." },
+        { "label": "Desarrollo de Producto", "description": "De la idea al lanzamiento, con metodologías modernas." },
+        { "label": "Modernización de Plataforma", "description": "Re-arquitectura, migraciones y cloud native." },
+        { "label": "UX / UI", "description": "Diseño de interfaz, sistemas de diseño y research." },
+        { "label": "Data & IA", "description": "Modelos, pipelines y productos inteligentes." },
+        { "label": "DevEx & DevOps", "description": "Automatización, observabilidad y CI/CD maduro." }
+      ]
+    },
+    {
+      "id": "industries",
+      "layout": "metrics-grid",
+      "title": "Industrias donde ya hemos operado",
+      "metrics": [
+        { "label": "E-commerce", "value": "25+", "detail": "proyectos" },
+        { "label": "Fintech", "value": "18", "detail": "productos en producción" },
+        { "label": "SaaS B2B", "value": "30+", "detail": "integraciones entregadas" },
+        { "label": "Retail", "value": "12", "detail": "iniciativas omnicanal" }
+      ]
+    },
+    {
+      "id": "process",
+      "layout": "process-steps",
+      "title": "Cómo trabajamos contigo",
+      "items": [
+        { "label": "Discovery", "description": "Entendemos tu producto, tu equipo y tus objetivos de negocio." },
+        { "label": "Propuesta", "description": "Plan claro de alcance, entregables, métricas y equipo asignado." },
+        { "label": "Delivery", "description": "Sprints cortos con visibilidad total del avance." },
+        { "label": "Handover", "description": "Transferencia de conocimiento, documentación y ownership." }
+      ]
+    },
+    {
+      "id": "case-studies",
+      "layout": "case-study-highlight",
+      "title": "Resultados que importan",
+      "metrics": [
+        { "label": "Reducción en lead time de deploy", "value": "82%", "detail": "de 6h a 65 min" }
+      ],
+      "body": "Ayudamos a un retailer enterprise a modernizar su pipeline de entrega y bajar el riesgo de cada release. En 4 meses, el equipo recuperó autonomía técnica y velocidad."
+    },
+    {
+      "id": "logo-wall",
+      "layout": "logo-wall",
+      "title": "Clientes que confían en nosotros",
+      "logos": []
+    },
+    {
+      "id": "testimonials",
+      "layout": "testimonial-grid",
+      "title": "Lo que dicen nuestros clientes",
+      "items": [
+        {
+          "label": "CTO, retailer enterprise",
+          "description": "MagmaLabs nos dio una aceleración real. En 2 meses ya estábamos entregando funcionalidad con el doble de confianza."
+        },
+        {
+          "label": "Head of Product, fintech",
+          "description": "Su equipo encaja con el nuestro como si fueran internos. La calidad técnica y el criterio de producto nos sorprendieron."
+        }
+      ]
+    },
+    {
+      "id": "why-us",
+      "layout": "metrics-grid",
+      "title": "Por qué elegirnos",
+      "metrics": [
+        { "label": "Net Promoter Score", "value": "74" },
+        { "label": "Retención de clientes", "value": "92%", "detail": "año sobre año" },
+        { "label": "Engineers senior/lead", "value": "70%", "detail": "del equipo" }
+      ]
+    },
+    {
+      "id": "team",
+      "layout": "two-column-text",
+      "title": "Un equipo serio sobre el craft",
+      "body": "Somos ingenieros y diseñadores con trayectorias largas, que hemos visto productos crecer de cero a millones de usuarios. Cuidamos el código, las personas y las relaciones.",
+      "bullets": [
+        "Ingeniería senior que escala con tu producto",
+        "Diseño estratégico, no decorativo",
+        "Visibilidad total con métricas y cadencias claras"
+      ]
+    },
+    {
+      "id": "closing-cta",
+      "layout": "closing-cta",
+      "title": "Hablemos de tu producto.",
+      "subtitle": "Agenda una sesión con nuestro equipo.",
+      "cta": {
+        "label": "Agendar llamada",
+        "url": "https://magmalabs.io/contact",
+        "email": "hello@magmalabs.io"
+      }
+    }
+  ]
+}

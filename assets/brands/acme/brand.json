@@ -1,0 +1,49 @@
+{
+  "id": "acme",
+  "name": "Acme Inc",
+  "description": "Neutral example brand included as a starting point for open source users. Replace with your own brand by running `pnpm cli init-brand`.",
+  "colors": {
+    "primary": "#0066FF",
+    "secondary": "#0A2540",
+    "accent": "#0099FF",
+    "background": "#ffffff",
+    "surface": "#F1F4F8",
+    "text": "#0A2540",
+    "text_muted": "#425466",
+    "success": "#2fb67b",
+    "warning": "#e6a822",
+    "danger": "#d62828"
+  },
+  "fonts": {
+    "heading": "Inter",
+    "body": "Inter",
+    "mono": "Menlo"
+  },
+  "logo_paths": {},
+  "spacing_rules": {
+    "safe_margin_inches": 0.5,
+    "inner_gap_inches": 0.3,
+    "section_gap_inches": 0.5
+  },
+  "border_radius": 0.08,
+  "shadow_style": "soft",
+  "preferred_layouts": [
+    "hero-cover",
+    "capabilities-grid",
+    "metrics-grid",
+    "case-study-highlight",
+    "closing-cta"
+  ],
+  "image_treatment_rules": {
+    "default_fit": "cover",
+    "rounded": true,
+    "rounded_radius_pct": 6,
+    "shadow": false
+  },
+  "default_theme": "light-corporate",
+  "page_backgrounds": {
+    "light": "#ffffff",
+    "dark": "#0A2540",
+    "accent": "#0066FF"
+  }
+}

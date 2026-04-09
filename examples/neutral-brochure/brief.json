@@ -1,0 +1,17 @@
+{
+  "id": "brief-neutral-acme",
+  "title": "Acme Inc Commercial Brochure",
+  "goal": "Introduce Acme Inc to potential enterprise customers.",
+  "audience": "Decision-makers evaluating Acme Inc as a vendor.",
+  "language": "en",
+  "tone": "professional",
+  "brand_id": "acme",
+  "presentation_type": "brochure",
+  "max_slides": 10,
+  "key_messages": [
+    "Who we are",
+    "What we do",
+    "Why choose us",
+    "How to get started"
+  ]
+}

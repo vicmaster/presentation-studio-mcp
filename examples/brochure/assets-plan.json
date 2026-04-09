@@ -1,0 +1,25 @@
+{
+  "id": "brochure-assets",
+  "base_dir": "examples/brochure/assets",
+  "operations": [
+    {
+      "operation": "cover_crop",
+      "input_path": "source/hero.jpg",
+      "output_path": "processed/hero-cover.png",
+      "width": 1920,
+      "height": 1080,
+      "anchor": "center"
+    },
+    {
+      "operation": "thumbnail",
+      "input_path": "source/screenshot.png",
+      "output_path": "processed/screenshot-thumb.png",
+      "width": 800,
+      "height": 600
+    }
+  ],
+  "defaults": {
+    "role": "hero",
+    "tags": ["brochure", "magmalabs"]
+  }
+}

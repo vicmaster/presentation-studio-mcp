@@ -1,0 +1,92 @@
+import { DeckTemplateSchema, type DeckTemplate } from '@presentation-studio/schema';
+
+export const quarterlyReview: DeckTemplate = DeckTemplateSchema.parse({
+  id: 'quarterly-review',
+  name: 'Quarterly Business Review',
+  description:
+    'QBR completo: resumen del trimestre, highlights, lowlights, pipeline, roadmap y metas del próximo trimestre.',
+  recommended_audience: 'Leadership, clientes estratégicos, equipos de cuenta.',
+  recommended_slide_count: { min: 10, max: 18, ideal: 14 },
+  density_guidance: 'balanced',
+  content_guidance: [
+    'Organiza el contenido en bloques: qué pasó, qué aprendimos, qué sigue.',
+    'Usa métricas comparadas contra el trimestre anterior.',
+  ],
+  default_theme: 'magma',
+  slide_flow: [
+    {
+      slide_id: 'cover',
+      layout: 'hero-cover',
+      purpose: 'Portada del QBR.',
+      required_fields: ['title'],
+      optional_fields: ['subtitle'],
+      density: 'minimal',
+    },
+    {
+      slide_id: 'agenda',
+      layout: 'capabilities-grid',
+      purpose: 'Agenda del QBR.',
+      required_fields: ['title', 'items'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'headline',
+      layout: 'section-divider',
+      purpose: 'Titular del trimestre.',
+      required_fields: ['title'],
+      optional_fields: ['subtitle'],
+      density: 'minimal',
+    },
+    {
+      slide_id: 'metrics',
+      layout: 'metrics-grid',
+      purpose: 'KPIs del trimestre.',
+      required_fields: ['title', 'metrics'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'highlights',
+      layout: 'capabilities-grid',
+      purpose: 'Highlights del trimestre.',
+      required_fields: ['title', 'items'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'lowlights',
+      layout: 'two-column-text',
+      purpose: 'Lowlights y aprendizajes.',
+      required_fields: ['title', 'bullets'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'case-highlight',
+      layout: 'case-study-highlight',
+      purpose: 'Caso destacado del trimestre.',
+      required_fields: ['title'],
+      optional_fields: ['body', 'metrics'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'roadmap',
+      layout: 'timeline-slide',
+      purpose: 'Roadmap del próximo trimestre.',
+      required_fields: ['title', 'items'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'goals',
+      layout: 'metrics-grid',
+      purpose: 'Metas y KPIs del próximo trimestre.',
+      required_fields: ['title', 'metrics'],
+      density: 'balanced',
+    },
+    {
+      slide_id: 'closing-cta',
+      layout: 'closing-cta',
+      purpose: 'Cierre con CTA.',
+      required_fields: ['title'],
+      optional_fields: ['cta'],
+      density: 'minimal',
+    },
+  ],
+});

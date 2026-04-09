@@ -1,0 +1,20 @@
+{
+  "id": "brief-qbr-2026-q1",
+  "title": "QBR 2026 Q1 - MagmaLabs",
+  "goal": "Resumir el trimestre: métricas, highlights, lowlights y metas del próximo.",
+  "audience": "Leadership team y board.",
+  "language": "es",
+  "tone": "professional",
+  "brand_id": "magmalabs",
+  "presentation_type": "quarterly-review",
+  "max_slides": 14,
+  "key_messages": [
+    "Agenda",
+    "Titular del trimestre",
+    "Métricas",
+    "Highlights",
+    "Lowlights",
+    "Roadmap Q2",
+    "Metas Q2"
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "Propuesta comercial Northwind",
+    "subtitle": "Modernización de plataforma Q2-Q3",
+    "language": "es",
+    "presentation_type": "sales-proposal",
+    "author": "presentation-studio-mcp",
+    "version": "1.0.0"
+  },
+  "brand": {
+    "id": "magmalabs",
+    "name": "MagmaLabs",
+    "primary_color": "#f84848",
+    "secondary_color": "#000000",
+    "background_color": "#ffffff",
+    "text_color": "#111111",
+    "heading_font": "Lato",
+    "body_font": "Lato"
+  },
+  "theme": {
+    "id": "magma",
+    "page_size": "LAYOUT_WIDE",
+    "density": "balanced",
+    "background_style": "light",
+    "footer_text": "Propuesta Northwind · Confidencial"
+  },
+  "slides": [
+    {
+      "id": "cover",
+      "layout": "hero-cover",
+      "kicker": "Propuesta comercial",
+      "title": "Modernización de plataforma",
+      "subtitle": "Propuesta preparada para Northwind"
+    },
+    {
+      "id": "context",
+      "layout": "two-column-text",
+      "title": "Contexto",
+      "body": "Northwind opera una plataforma web y mobile con 5 años de evolución. Hoy el equipo reporta fricción para lanzar nuevas funcionalidades y crecimiento limitado por deuda técnica.",
+      "bullets": [
+        "Lead time alto en el equipo de producto",
+        "Stack fragmentado",
+        "Onboarding de nuevos devs muy lento"
+      ]
+    },
+    {
+      "id": "objectives",
+      "layout": "capabilities-grid",
+      "title": "Objetivos del proyecto",
+      "items": [
+        { "label": "Reducir lead time", "description": "Cortar el ciclo idea → producción a la mitad." },
+        { "label": "Simplificar stack", "description": "Unificar los repos y herramientas críticas." },
+        { "label": "Mejorar DevEx", "description": "Acelerar el onboarding de nuevos engineers." },
+        { "label": "Observabilidad", "description": "Métricas y alertas de calidad en producción." }
+      ]
+    },
+    {
+      "id": "scope",
+      "layout": "capabilities-grid",
+      "title": "Alcance",
+      "items": [
+        { "label": "Incluye", "description": "Re-arquitectura, migraciones, CI/CD, observabilidad, enablement." },
+        { "label": "No incluye", "description": "Rediseño visual, soporte 24/7, migración de datos histórica." }
+      ]
+    },
+    {
+      "id": "approach",
+      "layout": "process-steps",
+      "title": "Metodología",
+      "items": [
+        { "label": "Discovery", "description": "2 semanas de análisis y mapeo." },
+        { "label": "Plan detallado", "description": "Roadmap aprobado conjuntamente." },
+        { "label": "Build", "description": "Ejecución iterativa, sprints de 2 semanas." },
+        { "label": "Handover", "description": "Transferencia documentada al equipo interno." }
+      ]
+    },
+    {
+      "id": "timeline",
+      "layout": "timeline-slide",
+      "title": "Timeline propuesto",
+      "items": [
+        { "label": "Semana 1-2", "description": "Discovery" },
+        { "label": "Semana 3-4", "description": "Plan detallado" },
+        { "label": "Semana 5-12", "description": "Build + enablement" },
+        { "label": "Semana 13", "description": "Cierre y handover" }
+      ]
+    },
+    {
+      "id": "deliverables",
+      "layout": "capabilities-grid",
+      "title": "Entregables",
+      "items": [
+        { "label": "Arquitectura objetivo", "description": "Diagrama, ADRs y plan de migración." },
+        { "label": "CI/CD maduro", "description": "Pipelines paralelos con rollback." },
+        { "label": "Observabilidad", "description": "Dashboards, alertas y runbooks." },
+        { "label": "Enablement", "description": "Training y documentación entregados." }
+      ]
+    },
+    {
+      "id": "team",
+      "layout": "testimonial-grid",
+      "title": "Equipo asignado",
+      "items": [
+        { "label": "Tech Lead senior", "description": "Owner técnico del proyecto, 10+ años de experiencia." },
+        { "label": "2 Engineers senior", "description": "Ejecución día a día." },
+        { "label": "Product / Delivery", "description": "Visibilidad, cadencia y reporting." }
+      ]
+    },
+    {
+      "id": "investment",
+      "layout": "metrics-grid",
+      "title": "Inversión",
+      "metrics": [
+        { "label": "Inversión total", "value": "USD 240K", "detail": "13 semanas" },
+        { "label": "Equipo", "value": "4 FTE", "detail": "dedicación plena" },
+        { "label": "Garantía", "value": "30 días", "detail": "post-entrega" }
+      ]
+    },
+    {
+      "id": "next-steps",
+      "layout": "process-steps",
+      "title": "Siguientes pasos",
+      "items": [
+        { "label": "Aprobación", "description": "Firma de la propuesta." },
+        { "label": "Kickoff", "description": "Sesión conjunta con stakeholders." },
+        { "label": "Discovery", "description": "Comienza semana 1." }
+      ]
+    },
+    {
+      "id": "closing-cta",
+      "layout": "closing-cta",
+      "title": "Hagámoslo juntos.",
+      "subtitle": "Estamos listos para comenzar.",
+      "cta": {
+        "label": "Aprobar propuesta",
+        "email": "hello@magmalabs.io",
+        "url": "https://magmalabs.io/contact"
+      }
+    }
+  ]
+}

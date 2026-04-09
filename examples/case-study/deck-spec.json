@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "Caso de estudio ACME",
+    "subtitle": "Cómo modernizamos la entrega en un retailer enterprise",
+    "language": "es",
+    "presentation_type": "case-study",
+    "author": "presentation-studio-mcp",
+    "version": "1.0.0"
+  },
+  "brand": {
+    "id": "magmalabs",
+    "name": "MagmaLabs",
+    "primary_color": "#f84848",
+    "secondary_color": "#000000",
+    "background_color": "#ffffff",
+    "text_color": "#111111",
+    "heading_font": "Lato",
+    "body_font": "Lato"
+  },
+  "theme": {
+    "id": "magma",
+    "page_size": "LAYOUT_WIDE",
+    "density": "balanced",
+    "background_style": "light",
+    "footer_text": "Case Study · ACME"
+  },
+  "slides": [
+    {
+      "id": "cover",
+      "layout": "hero-cover",
+      "kicker": "Case Study",
+      "title": "Modernizando la entrega en ACME Retail",
+      "subtitle": "De deploys heroicos a releases diarios confiables"
+    },
+    {
+      "id": "client",
+      "layout": "two-column-text",
+      "title": "Sobre el cliente",
+      "body": "ACME Retail es una cadena de retail con 120+ tiendas en 4 países y operación e-commerce. Su plataforma web mueve más de 1M de sesiones/mes.",
+      "bullets": [
+        "Equipo de producto de 40 personas",
+        "Stack principal: Ruby on Rails + React",
+        "Infra en AWS con muchos servicios legacy"
+      ]
+    },
+    {
+      "id": "challenge",
+      "layout": "two-column-text",
+      "kicker": "El reto",
+      "title": "Deploys dolorosos, equipos bloqueados",
+      "body": "El pipeline de entrega era frágil, el tiempo promedio de un deploy era de 6 horas y cualquier release requería coordinación manual de 4 equipos distintos.",
+      "bullets": [
+        "Lead time promedio: 6h",
+        "Fallas en producción cada 2 semanas",
+        "Equipo de producto bloqueado esperando merges",
+        "Confianza baja en los hotfixes"
+      ]
+    },
+    {
+      "id": "approach",
+      "layout": "process-steps",
+      "title": "Nuestro enfoque",
+      "items": [
+        { "label": "Diagnóstico", "description": "Entrevistas, observación y mapeo del pipeline actual." },
+        { "label": "Quick wins", "description": "Automatización de pasos críticos antes de tocar arquitectura." },
+        { "label": "Rediseño", "description": "Nueva pipeline con paralelismo y feature flags." },
+        { "label": "Enablement", "description": "Training y documentación para el equipo interno." }
+      ]
+    },
+    {
+      "id": "solution",
+      "layout": "image-right-text-left",
+      "title": "Lo que construimos",
+      "body": "Implementamos una pipeline multi-stage con tests canarios, feature flags y rollback automático. El equipo de ACME ahora puede desplegar varias veces al día sin fricción y con monitoreo activo del impacto.",
+      "bullets": [
+        "Deploys multi-stage con canary",
+        "Feature flags como primera clase",
+        "Observabilidad unificada",
+        "Runbooks automatizados"
+      ]
+    },
+    {
+      "id": "results",
+      "layout": "metrics-grid",
+      "title": "Resultados",
+      "metrics": [
+        { "label": "Lead time", "value": "65 min", "detail": "vs 6h antes" },
+        { "label": "Fallas en prod", "value": "-78%", "detail": "trimestre contra trimestre" },
+        { "label": "Deploys/semana", "value": "22", "detail": "antes 3" },
+        { "label": "NPS interno", "value": "+48", "detail": "en el equipo de plataforma" }
+      ]
+    },
+    {
+      "id": "testimonial",
+      "layout": "quote-slide",
+      "quote": "MagmaLabs nos dio tranquilidad. Por primera vez puedo hacer deploy un viernes sin miedo.",
+      "quote_author": "Ana Martínez, VP Engineering en ACME Retail"
+    },
+    {
+      "id": "closing-cta",
+      "layout": "closing-cta",
+      "title": "¿Te suena?",
+      "subtitle": "Podemos hacer lo mismo por tu equipo.",
+      "cta": {
+        "label": "Hablemos",
+        "url": "https://magmalabs.io/contact",
+        "email": "hello@magmalabs.io"
+      }
+    }
+  ]
+}

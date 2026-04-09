@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "title": "Acme Inc Commercial Brochure",
+    "subtitle": "A neutral, white-labeled example",
+    "language": "en",
+    "presentation_type": "brochure",
+    "author": "presentation-studio-mcp",
+    "version": "1.0.0",
+    "tags": ["example", "neutral", "acme"]
+  },
+  "brand": {
+    "id": "acme",
+    "name": "Acme Inc",
+    "primary_color": "#0066FF",
+    "secondary_color": "#0A2540",
+    "accent_color": "#0099FF",
+    "background_color": "#ffffff",
+    "text_color": "#0A2540",
+    "heading_font": "Inter",
+    "body_font": "Inter"
+  },
+  "theme": {
+    "id": "light-corporate",
+    "page_size": "LAYOUT_WIDE",
+    "density": "balanced",
+    "background_style": "light",
+    "show_footer": true,
+    "show_page_numbers": true,
+    "footer_text": "Acme Inc"
+  },
+  "slides": [
+    {
+      "id": "cover",
+      "layout": "hero-cover",
+      "kicker": "Acme Inc",
+      "title": "Software that scales with your business.",
+      "subtitle": "Reliable platforms, trusted by teams everywhere."
+    },
+    {
+      "id": "who-we-are",
+      "layout": "two-column-text",
+      "kicker": "Who we are",
+      "title": "A product company focused on reliability and outcomes.",
+      "body": "Acme Inc builds infrastructure and tooling that helps teams ship software faster without sacrificing quality. We are a small, senior team.",
+      "bullets": [
+        "Founded by engineers",
+        "Customers in 12 countries",
+        "Ship-first culture"
+      ]
+    },
+    {
+      "id": "what-we-do",
+      "layout": "capabilities-grid",
+      "title": "What we do",
+      "items": [
+        { "label": "Product Engineering", "description": "We build and ship production-grade software with your team." },
+        { "label": "Platform Reliability", "description": "Observability, SLOs and runbooks that reduce on-call pain." },
+        { "label": "Developer Experience", "description": "Tooling that makes your engineers faster every day." },
+        { "label": "Managed Services", "description": "We run critical systems so your team can focus on the product." }
+      ]
+    },
+    {
+      "id": "impact",
+      "layout": "metrics-grid",
+      "title": "Impact by the numbers",
+      "metrics": [
+        { "label": "Customers", "value": "120+" },
+        { "label": "Uptime SLO", "value": "99.95%" },
+        { "label": "NPS", "value": "68" },
+        { "label": "Incidents YoY", "value": "-42%" }
+      ]
+    },
+    {
+      "id": "process",
+      "layout": "process-steps",
+      "title": "How we work with you",
+      "items": [
+        { "label": "Discover", "description": "We learn your business, stack and goals." },
+        { "label": "Plan", "description": "Clear roadmap with outcomes and owners." },
+        { "label": "Build", "description": "Iterative delivery with demos every week." },
+        { "label": "Operate", "description": "Smooth handoff and ongoing support." }
+      ]
+    },
+    {
+      "id": "testimonial",
+      "layout": "quote-slide",
+      "quote": "Acme helped us cut incident frequency almost in half in the first quarter.",
+      "quote_author": "VP Engineering, Globex"
+    },
+    {
+      "id": "why-us",
+      "layout": "capabilities-grid",
+      "title": "Why Acme",
+      "items": [
+        { "label": "Senior team", "description": "No juniors on the project unless you ask for them." },
+        { "label": "Clear scope", "description": "No surprise invoices, ever." },
+        { "label": "Real handover", "description": "Your team owns what we build from day one." },
+        { "label": "Transparent", "description": "All metrics visible, all decisions documented." }
+      ]
+    },
+    {
+      "id": "closing-cta",
+      "layout": "closing-cta",
+      "title": "Let's build something durable.",
+      "subtitle": "Book an intro call with our team.",
+      "cta": {
+        "label": "Book intro call",
+        "email": "hello@acme.example",
+        "url": "https://acme.example/contact"
+      }
+    }
+  ]
+}
